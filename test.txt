@@ -1,1 +1,2 @@
-abc
+df -h | grep ai-station
+//phm1605-nas.local/phm1605/ai-station/data   14T   16G   14T   1% /srv/ai-station/data

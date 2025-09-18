@@ -10,7 +10,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain 
   storageClassName: ""
   hostPath:
-    path: /media/phm1605/hddstorage/data/ai-station
+    path: /srv/ai-station/data
 ---
 apiVersion: v1 
 kind: PersistentVolumeClaim 
