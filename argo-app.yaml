@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/phm1605/ai-station-devops.git
     targetRevision: main
-    path: .
+    path: apps
     directory:
       recurse: true
   destination:
