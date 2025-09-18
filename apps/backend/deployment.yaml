@@ -1,0 +1,41 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: backend 
+  namespace: ai-station 
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: backend 
+  template:
+    metadata:
+      labels:
+        app: backend 
+    spec:
+      containers:
+      - name: backend 
+        image: ghcr.io/phm1605/aistation-backend:main 
+        envFrom:
+        - secretRef:
+            name: app-secrets
+        env:
+        - name: DATA_DIR
+          value: /data 
+        ports:
+        - containerPort: 8000
+          name: http 
+        volumeMounts:
+        - name: ai-data 
+          mountPath: /data 
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: 1
+            memory: "1Gi"
+      volumes:
+      - name: ai-data 
+        persistentVolumeClaim:
+          claimName: ai-data-pvc 

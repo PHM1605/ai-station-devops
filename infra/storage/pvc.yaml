@@ -1,0 +1,27 @@
+apiVersion: v1 
+kind: PersistentVolume
+metadata:
+  name: ai-data-pv 
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes: 
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain 
+  storageClassName: ""
+  hostPath:
+    path: /media/phm1605/hddstorage/data/ai-station
+---
+apiVersion: v1 
+kind: PersistentVolumeClaim 
+metadata:
+  name: ai-data-pvc 
+  namespace: ai-station 
+spec:
+  accessModes:
+    - ReadWriteMany 
+  resources:
+    requests:
+      storage: 2Ti
+  storageClassName: ""
+  volumeName: ai-data-pv 

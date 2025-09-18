@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+  name: aistation
+  namespace: ai-station
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+  - host: aistation.io.vn
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
+      - path: /api 
+        pathType: Prefix 
+        backend:
+          service:
+            name: backend 
+            port:
+              number: 8000
+      - path: /ws 
+        pathType: Prefix 
+        backend:
+          service:
+            name: backend 
+            port:
+              number: 8000 
