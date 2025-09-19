@@ -10,7 +10,7 @@ metadata:
   namespace: cloudflared
 type: Opaque
 stringData:
-  token: eyJhIjoiOTM3YTE5Nzk5ZTkzNmEyOGI4NGJmZTNjMzdlOGVhYmYiLCJ0IjoiYzkzYjY0ZjAtMjdlZi00MTgzLWIzOGEtY2JjOTMxY2NhNzRmIiwicyI6Ik5USXpOakJqT1RRdE5HRTJPQzAwWW1KbUxUZzRZekV0TlRjell6aGtObVZtTkRCbCJ9
+  token: eyJhIjoiOTM3YTE5Nzk5ZTkzNmEyOGI4NGJmZTNjMzdlOGVhYmYiLCJ0IjoiODBiN2Q0ZTctMDdmNy00YmRkLWEwYjQtYTIzMmE5YTRhMTcxIiwicyI6IlltTTVOV00xTVRZdFlXTTBaQzAwWm1WaExXRXpZMk10TW1WaE1UYzJOREppTldSaSJ9
 ---
 apiVersion: apps/v1 
 kind: Deployment

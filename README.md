@@ -1,0 +1,1 @@
+copy ~/.cloudflared/config.yml
