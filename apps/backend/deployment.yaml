@@ -12,10 +12,12 @@ spec:
     metadata:
       labels:
         app: backend 
+      annotations:
+        trigger: "1"
     spec:
       containers:
       - name: backend 
-        image: ghcr.io/phm1605/aistation-backend:main-250920
+        image: ghcr.io/phm1605/aistation-backend:main-2509204
         envFrom:
         - secretRef:
             name: app-secrets
