@@ -32,11 +32,11 @@ spec:
           mountPath: /data 
         resources:
           requests:
-            cpu: "500m"
-            memory: "512Mi"
-          limits:
             cpu: 1
-            memory: "1Gi"
+            memory: 2Gi 
+          limits:
+            cpu: 2
+            memory: 4Gi 
       volumes:
       - name: ai-data 
         persistentVolumeClaim:
