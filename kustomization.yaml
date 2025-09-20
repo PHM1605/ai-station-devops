@@ -5,3 +5,4 @@ resources:
 - apps/frontend
 - apps/worker
 - apps/rabbitmq
+- redis
