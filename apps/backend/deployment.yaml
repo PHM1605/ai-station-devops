@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend 
-        image: ghcr.io/phm1605/aistation-backend:main-2509201
+        image: ghcr.io/phm1605/aistation-backend:main-2509202
         envFrom:
         - secretRef:
             name: app-secrets
