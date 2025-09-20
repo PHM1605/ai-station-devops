@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: frontend 
+      annotations:
+        trigger: 12
     spec:
       containers:
       - name: web 
