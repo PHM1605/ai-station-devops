@@ -6,3 +6,12 @@ resources:
 - apps/worker
 - apps/rabbitmq
 - redis
+secretGenerator:
+- name: app-secrets
+  namespace: ai-station 
+  behavior: replace
+  envs:
+  - secrets/app-secrets.env
+  options:
+    disableNameSuffixHash: true
+    

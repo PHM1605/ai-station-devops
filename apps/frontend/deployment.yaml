@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: web 
-        image: ghcr.io/phm1605/aistation-frontend:main-2509209
+        image: ghcr.io/phm1605/aistation-frontend:main-latest
         ports:
         - containerPort: 80
           name: http 
