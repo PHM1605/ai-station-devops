@@ -13,7 +13,7 @@ spec:
       labels:
         app: backend 
       annotations:
-        trigger: "1"
+        trigger: "14"
     spec:
       containers:
       - name: backend 
