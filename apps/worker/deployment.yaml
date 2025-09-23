@@ -13,7 +13,7 @@ spec:
       labels:
         app: worker
       annotations:
-        trigger: "14"
+        trigger: "15"
     spec:
       containers:
       - name: worker
