@@ -8,4 +8,3 @@ resources:
 - redis
 - secrets/app-secrets.yaml 
 - ingress
-- argocd
