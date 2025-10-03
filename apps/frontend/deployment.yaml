@@ -13,7 +13,7 @@ spec:
       labels:
         app: frontend 
       annotations:
-        trigger: "19"
+        trigger: "20"
     spec:
       containers:
       - name: frontend 
