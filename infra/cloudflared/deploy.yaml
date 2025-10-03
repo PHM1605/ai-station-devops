@@ -1,10 +1,10 @@
-apiVersion: v1 
-kind: Namespace 
+apiVersion: v1
+kind: Namespace
 metadata:
   name: cloudflared
 ---
-apiVersion: v1 
-kind: Secret 
+apiVersion: v1
+kind: Secret
 metadata:
   name: tunnel-credentials
   namespace: cloudflared
@@ -17,13 +17,32 @@ stringData:
       "TunnelID":"2b40ca2b-5ea7-4eb3-962f-0600e051e55c"
     }
 ---
-apiVersion: apps/v1 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudflared-config
+  namespace: cloudflared
+data:
+  config.yaml: |
+    tunnel: 2b40ca2b-5ea7-4eb3-962f-0600e051e55c
+    credentials-file: /etc/cloudflared/creds/creds.json
+
+    ingress:
+      - hostname: aistation.io.vn
+        service: http://frontend.ai-station.svc.cluster.local:80
+      - hostname: app.aistation.io.vn
+        service: http://traefik.kube-system.svc.cluster.local:80
+      - hostname: docs.aistation.io.vn
+        service: http://frontend.ai-station.svc.cluster.local:80
+      - service: http_status:404
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloudflared 
-  namespace: cloudflared 
+  name: cloudflared
+  namespace: cloudflared
 spec:
-  replicas: 1 
+  replicas: 1
   selector:
     matchLabels:
       app: cloudflared
@@ -33,21 +52,25 @@ spec:
         app: cloudflared
     spec:
       containers:
-      - name: cloudflared 
-        image: cloudflare/cloudflared:latest 
+      - name: cloudflared
+        image: cloudflare/cloudflared:latest
         args: 
-        - tunnel
+        - tunnel 
+        - --config 
+        - /etc/cloudflared/config/config.yaml
         - --no-autoupdate
-        - --credentials-file
-        - /etc/cloudflared/creds/creds.json
         - run
-        - 2b40ca2b-5ea7-4eb3-962f-0600e051e55c
         volumeMounts:
         - name: creds
-          mountPath: /etc/cloudflared/creds 
-          readOnly: true 
+          mountPath: /etc/cloudflared/creds
+          readOnly: true
+        - name: config
+          mountPath: /etc/cloudflared/config
+          readOnly: true
       volumes:
-      - name: creds 
+      - name: creds
         secret:
           secretName: tunnel-credentials
-          
+      - name: config
+        configMap:
+          name: cloudflared-config
