@@ -7,3 +7,4 @@ resources:
 - apps/rabbitmq
 - redis
 - secrets/app-secrets.yaml 
+- ingress
