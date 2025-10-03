@@ -4,9 +4,14 @@ metadata:
   name: argocd-server
   namespace: argocd
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.insecureSkipVerify: "true"
 spec:
   ingressClassName: traefik
+  tls:
+  - hosts:
+    - argocd.aistation.io.vn
   rules:
   - host: argocd.aistation.io.vn 
     http:
