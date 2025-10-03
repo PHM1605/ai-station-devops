@@ -13,11 +13,11 @@ spec:
       labels:
         app: backend 
       annotations:
-        trigger: "15"
+        trigger: "17"
     spec:
       containers:
       - name: backend 
-        image: ghcr.io/phm1605/aistation-backend:main-2509231
+        image: ghcr.io/phm1605/aistation-backend:main-latest
         envFrom:
         - secretRef:
             name: app-secrets
