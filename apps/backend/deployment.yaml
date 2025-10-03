@@ -13,12 +13,12 @@ spec:
       labels:
         app: backend 
       annotations:
-        trigger: "18"
+        trigger: "19"
     spec:
       containers:
       - name: backend 
         image: ghcr.io/phm1605/aistation-backend:main-latest
-        imagePullPolicty: Always
+        imagePullPolicy: Always
         envFrom:
         - secretRef:
             name: app-secrets

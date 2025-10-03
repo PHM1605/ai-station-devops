@@ -13,12 +13,12 @@ spec:
       labels:
         app: frontend 
       annotations:
-        trigger: "18"
+        trigger: "19"
     spec:
       containers:
       - name: frontend 
         image: ghcr.io/phm1605/aistation-frontend:main-latest
-        imagePullPolicty: Always
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
           name: http 
