@@ -34,7 +34,10 @@ data:
         service: http://traefik.kube-system.svc.cluster.local:80
       - hostname: docs.aistation.io.vn
         service: http://frontend.ai-station.svc.cluster.local:80
+      - hostname: argocd.aistation.io.vn
+        service: http://argocd-server.argocd.svc.cluster.local:80
       - service: http_status:404
+
 ---
 apiVersion: apps/v1
 kind: Deployment
