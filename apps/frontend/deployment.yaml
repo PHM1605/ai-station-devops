@@ -16,8 +16,9 @@ spec:
         trigger: "17"
     spec:
       containers:
-      - name: web 
-        image: ghcr.io/phm1605/aistation-frontend:main-2503101
+      - name: frontend 
+        image: ghcr.io/phm1605/aistation-frontend:main-latest
+        imagePullPolicty: Always
         ports:
         - containerPort: 80
           name: http 

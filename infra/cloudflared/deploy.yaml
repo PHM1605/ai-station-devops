@@ -6,11 +6,16 @@ metadata:
 apiVersion: v1 
 kind: Secret 
 metadata:
-  name: tunnel-token
+  name: tunnel-credentials
   namespace: cloudflared
 type: Opaque
 stringData:
-  token: eyJhIjoiOTM3YTE5Nzk5ZTkzNmEyOGI4NGJmZTNjMzdlOGVhYmYiLCJ0IjoiODBiN2Q0ZTctMDdmNy00YmRkLWEwYjQtYTIzMmE5YTRhMTcxIiwicyI6IlltTTVOV00xTVRZdFlXTTBaQzAwWm1WaExXRXpZMk10TW1WaE1UYzJOREppTldSaSJ9
+  creds.json: |
+    {
+      "AccountTag":"937a19799e936a28b84bfe3c37e8eabf",
+      "TunnelSecret":"dwd0Rlb/5WAVi6da8M9mRvFj5399PE493g4bobHUAKA=",
+      "TunnelID":"2b40ca2b-5ea7-4eb3-962f-0600e051e55c"
+    }
 ---
 apiVersion: apps/v1 
 kind: Deployment
@@ -30,11 +35,19 @@ spec:
       containers:
       - name: cloudflared 
         image: cloudflare/cloudflared:latest 
-        args: ["tunnel","--no-autoupdate","run","--token","$(TUNNEL_TOKEN)"]
-        env:
-        - name: TUNNEL_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: tunnel-token 
-              key: token
-              
+        args: 
+        - tunnel
+        - --no-autoupdate
+        - --credentials-file
+        - /etc/cloudflared/creds/creds.json
+        - run
+        - 2b40ca2b-5ea7-4eb3-962f-0600e051e55c
+        volumeMounts:
+        - name: creds
+          mountPath: /etc/cloudflared/creds 
+          readOnly: true 
+      volumes:
+      - name: creds 
+        secret:
+          secretName: tunnel-credentials
+          
