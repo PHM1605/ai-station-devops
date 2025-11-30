@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend 
-        image: ghcr.io/phm1605/aistation-frontend:main-latest
+        image: ghcr.io/phm1605/aistation-frontend:301125
         imagePullPolicy: Always
         ports:
         - containerPort: 80
