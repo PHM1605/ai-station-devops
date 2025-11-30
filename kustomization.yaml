@@ -4,7 +4,7 @@ resources:
 - apps/backend
 - apps/frontend
 - apps/worker
-- apps/rabbitmq
 - redis
 - secrets/app-secrets.yaml 
 - ingress
+- infra/cloudflared
