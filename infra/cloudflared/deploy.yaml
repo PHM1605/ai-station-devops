@@ -34,7 +34,7 @@ data:
 
       - hostname: app.aistation.io.vn
         service: http://frontend.ai-station.svc.cluster.local:80
-        path: /api
+        path: /
 
       - hostname: app.aistation.io.vn 
         service: http://backend.ai-station.svc.cluster.local:80
