@@ -32,6 +32,9 @@ data:
         service: http://frontend.ai-station.svc.cluster.local:80
       - hostname: app.aistation.io.vn
         service: http://traefik.kube-system.svc.cluster.local:80
+        originRequest:
+          httpHostHeader: app.aistation.io.vn 
+          noTLSVerify: true
       - hostname: docs.aistation.io.vn
         service: http://frontend.ai-station.svc.cluster.local:80
       - hostname: argocd.aistation.io.vn
