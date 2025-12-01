@@ -30,12 +30,25 @@ data:
     ingress:
       - hostname: aistation.io.vn
         service: http://frontend.ai-station.svc.cluster.local:80
+        path: /
+
       - hostname: app.aistation.io.vn
         service: http://frontend.ai-station.svc.cluster.local:80
+        path: /api
+
+      - hostname: app.aistation.io.vn 
+        service: http://backend.ai-station.svc.cluster.local:80
+        path: /api
+      
+      - hostname: aistation.io.vn
+        service: http://frontend.ai-station.svc.cluster.local:80
+
       - hostname: docs.aistation.io.vn
         service: http://frontend.ai-station.svc.cluster.local:80
+
       - hostname: argocd.aistation.io.vn
         service: http://argocd-server.argocd.svc.cluster.local:80
+      
       - service: http_status:404
 
 ---
