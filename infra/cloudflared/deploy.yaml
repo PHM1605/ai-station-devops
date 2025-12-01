@@ -28,10 +28,6 @@ data:
     credentials-file: /etc/cloudflared/creds/creds.json
 
     ingress:
-      - hostname: aistation.io.vn
-        service: http://frontend.ai-station.svc.cluster.local:80
-        path: /
-
       - hostname: app.aistation.io.vn
         service: http://frontend.ai-station.svc.cluster.local:80
         path: /
@@ -39,11 +35,11 @@ data:
       - hostname: app.aistation.io.vn 
         service: http://backend.ai-station.svc.cluster.local:80
         path: /api
-      
-      - hostname: aistation.io.vn
-        service: http://frontend.ai-station.svc.cluster.local:80
 
       - hostname: docs.aistation.io.vn
+        service: http://frontend.ai-station.svc.cluster.local:80
+      
+      - hostname: aistation.io.vn
         service: http://frontend.ai-station.svc.cluster.local:80
 
       - hostname: argocd.aistation.io.vn
