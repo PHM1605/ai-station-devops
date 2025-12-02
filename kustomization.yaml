@@ -7,4 +7,4 @@ resources:
 - redis
 - secrets/app-secrets.yaml 
 - ingress
-- infra/cloudflare
+- infra/cloudflared
